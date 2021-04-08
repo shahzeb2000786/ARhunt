@@ -16,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFB8B0C3261F99B800866EDA /* GoldCoin.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = GoldCoin.reality; path = ../../../GoldCoin.reality; sourceTree = "<group>"; };
+		BFB8B0C4261FB12400866EDA /* Coin.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Coin.rcproject; sourceTree = "<group>"; };
 		BFD2D7D5261E4F6200977F07 /* ARhunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARhunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD2D7DA261E4F6200977F07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,9 +58,11 @@
 		BFD2D7D7261E4F6200977F07 /* ARhunt */ = {
 			isa = PBXGroup;
 			children = (
+				BFB8B0C4261FB12400866EDA /* Coin.rcproject */,
 				BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */,
 				BFD2D7DA261E4F6200977F07 /* ViewController.swift */,
 				BFD2D7DC261E4F6200977F07 /* Experience.rcproject */,
+				BFB8B0C3261F99B800866EDA /* GoldCoin.reality */,
 				BFD2D7DE261E4F6200977F07 /* Main.storyboard */,
 				BFD2D7E1261E4F6400977F07 /* Assets.xcassets */,
 				BFD2D7E3261E4F6400977F07 /* LaunchScreen.storyboard */,
