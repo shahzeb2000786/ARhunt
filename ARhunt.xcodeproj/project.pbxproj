@@ -12,6 +12,7 @@
 		BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF764CC12637E9A300BFFD11 /* Leaderboard.swift */; };
 		BF9BF78A265632B90093BFBC /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BF789265632B90093BFBC /* InventoryItem.swift */; };
 		BF9BF78F265632E50093BFBC /* InventoryItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9BF78D265632E50093BFBC /* InventoryItems.xib */; };
+		BF9BF79326563D2B0093BFBC /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */; };
 		BFD2D7D9261E4F6200977F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */; };
 		BFD2D7DB261E4F6200977F07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7DA261E4F6200977F07 /* ViewController.swift */; };
 		BFD2D7DD261E4F6200977F07 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7DC261E4F6200977F07 /* Experience.rcproject */; };
@@ -30,6 +31,7 @@
 		BF764CC12637E9A300BFFD11 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		BF9BF789265632B90093BFBC /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		BF9BF78D265632E50093BFBC /* InventoryItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryItems.xib; sourceTree = "<group>"; };
+		BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		BFB8B0C3261F99B800866EDA /* GoldCoin.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = GoldCoin.reality; path = ../../../GoldCoin.reality; sourceTree = "<group>"; };
 		BFB8B0C4261FB12400866EDA /* Coin.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Coin.rcproject; sourceTree = "<group>"; };
 		BFD2D7D5261E4F6200977F07 /* ARhunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARhunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 				BFB8B0C4261FB12400866EDA /* Coin.rcproject */,
 				BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */,
 				BFD2D7DA261E4F6200977F07 /* ViewController.swift */,
+				BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */,
 				BFD2D7DC261E4F6200977F07 /* Experience.rcproject */,
 				BFB8B0C3261F99B800866EDA /* GoldCoin.reality */,
 				BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */,
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9BF79326563D2B0093BFBC /* InventoryViewController.swift in Sources */,
 				BFD2D7DB261E4F6200977F07 /* ViewController.swift in Sources */,
 				BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */,
 				BFD2D7D9261E4F6200977F07 /* AppDelegate.swift in Sources */,
