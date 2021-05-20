@@ -7,7 +7,7 @@
 
 import UIKit
 import RealityKit
-
+import FirebaseFirestore
 class ViewController: UIViewController {
     
     @IBOutlet var arView: ARView!
@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let boxAnchor = try! Experience.loadBox()
+      //  let db = Firestore.firestore()
 
        
 //         Load the "Box" scene from the "Experience" Reality File

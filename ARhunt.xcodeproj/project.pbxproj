@@ -3,19 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF289AF4264F9E3700632A2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF289AF3264F9E3700632A2F /* User.swift */; };
+		BF4D548A2637E6D8008F29AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */; };
+		BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF764CC12637E9A300BFFD11 /* Leaderboard.swift */; };
+		BF9BF78A265632B90093BFBC /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BF789265632B90093BFBC /* InventoryItem.swift */; };
+		BF9BF78F265632E50093BFBC /* InventoryItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9BF78D265632E50093BFBC /* InventoryItems.xib */; };
 		BFD2D7D9261E4F6200977F07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */; };
 		BFD2D7DB261E4F6200977F07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7DA261E4F6200977F07 /* ViewController.swift */; };
 		BFD2D7DD261E4F6200977F07 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = BFD2D7DC261E4F6200977F07 /* Experience.rcproject */; };
 		BFD2D7E0261E4F6200977F07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD2D7DE261E4F6200977F07 /* Main.storyboard */; };
 		BFD2D7E2261E4F6400977F07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD2D7E1261E4F6400977F07 /* Assets.xcassets */; };
 		BFD2D7E5261E4F6400977F07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD2D7E3261E4F6400977F07 /* LaunchScreen.storyboard */; };
+		FE44EE1A3239E723A8393D80 /* Pods_ARhunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BAB5746B86BB542512B2E7 /* Pods_ARhunt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C8722358CEC46CB47A95255 /* Pods-ARhunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARhunt.debug.xcconfig"; path = "Target Support Files/Pods-ARhunt/Pods-ARhunt.debug.xcconfig"; sourceTree = "<group>"; };
+		73EA46F545302CD6874233C0 /* Pods-ARhunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARhunt.release.xcconfig"; path = "Target Support Files/Pods-ARhunt/Pods-ARhunt.release.xcconfig"; sourceTree = "<group>"; };
+		A5BAB5746B86BB542512B2E7 /* Pods_ARhunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARhunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF289AF3264F9E3700632A2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF764CC12637E9A300BFFD11 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		BF9BF789265632B90093BFBC /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
+		BF9BF78D265632E50093BFBC /* InventoryItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryItems.xib; sourceTree = "<group>"; };
 		BFB8B0C3261F99B800866EDA /* GoldCoin.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = GoldCoin.reality; path = ../../../GoldCoin.reality; sourceTree = "<group>"; };
 		BFB8B0C4261FB12400866EDA /* Coin.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Coin.rcproject; sourceTree = "<group>"; };
 		BFD2D7D5261E4F6200977F07 /* ARhunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARhunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,17 +47,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE44EE1A3239E723A8393D80 /* Pods_ARhunt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF1DC7D4DAC18541E978A4A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5BAB5746B86BB542512B2E7 /* Pods_ARhunt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF289AF6264F9E3D00632A2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF289AF3264F9E3700632A2F /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF9BF77E265631650093BFBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF9BF789265632B90093BFBC /* InventoryItem.swift */,
+				BF9BF78D265632E50093BFBC /* InventoryItems.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BFD2D7CC261E4F6200977F07 = {
 			isa = PBXGroup;
 			children = (
 				BFD2D7D7261E4F6200977F07 /* ARhunt */,
 				BFD2D7D6261E4F6200977F07 /* Products */,
+				EE59D3C0EC5D33FF8B62EA39 /* Pods */,
+				AF1DC7D4DAC18541E978A4A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,12 +105,25 @@
 				BFD2D7DA261E4F6200977F07 /* ViewController.swift */,
 				BFD2D7DC261E4F6200977F07 /* Experience.rcproject */,
 				BFB8B0C3261F99B800866EDA /* GoldCoin.reality */,
+				BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */,
 				BFD2D7DE261E4F6200977F07 /* Main.storyboard */,
 				BFD2D7E1261E4F6400977F07 /* Assets.xcassets */,
 				BFD2D7E3261E4F6400977F07 /* LaunchScreen.storyboard */,
 				BFD2D7E6261E4F6400977F07 /* Info.plist */,
+				BF764CC12637E9A300BFFD11 /* Leaderboard.swift */,
+				BF289AF6264F9E3D00632A2F /* Model */,
+				BF9BF77E265631650093BFBC /* View */,
 			);
 			path = ARhunt;
+			sourceTree = "<group>";
+		};
+		EE59D3C0EC5D33FF8B62EA39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C8722358CEC46CB47A95255 /* Pods-ARhunt.debug.xcconfig */,
+				73EA46F545302CD6874233C0 /* Pods-ARhunt.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFD2D7E9261E4F6400977F07 /* Build configuration list for PBXNativeTarget "ARhunt" */;
 			buildPhases = (
+				C24C19C71426140BA8B0AB7A /* [CP] Check Pods Manifest.lock */,
 				BFD2D7D1261E4F6200977F07 /* Sources */,
 				BFD2D7D2261E4F6200977F07 /* Frameworks */,
 				BFD2D7D3261E4F6200977F07 /* Resources */,
+				117B28A6784327CBD1EC781E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,12 +186,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD2D7E5261E4F6400977F07 /* LaunchScreen.storyboard in Resources */,
+				BF4D548A2637E6D8008F29AE /* GoogleService-Info.plist in Resources */,
 				BFD2D7E2261E4F6400977F07 /* Assets.xcassets in Resources */,
 				BFD2D7E0261E4F6200977F07 /* Main.storyboard in Resources */,
+				BF9BF78F265632E50093BFBC /* InventoryItems.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		117B28A6784327CBD1EC781E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARhunt/Pods-ARhunt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARhunt/Pods-ARhunt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ARhunt/Pods-ARhunt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C24C19C71426140BA8B0AB7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARhunt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFD2D7D1261E4F6200977F07 /* Sources */ = {
@@ -142,7 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD2D7DB261E4F6200977F07 /* ViewController.swift in Sources */,
+				BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */,
 				BFD2D7D9261E4F6200977F07 /* AppDelegate.swift in Sources */,
+				BF9BF78A265632B90093BFBC /* InventoryItem.swift in Sources */,
+				BF289AF4264F9E3700632A2F /* User.swift in Sources */,
 				BFD2D7DD261E4F6200977F07 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +391,7 @@
 		};
 		BFD2D7EA261E4F6400977F07 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C8722358CEC46CB47A95255 /* Pods-ARhunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -307,6 +412,7 @@
 		};
 		BFD2D7EB261E4F6400977F07 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73EA46F545302CD6874233C0 /* Pods-ARhunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
