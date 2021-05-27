@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
-class Leaderboard: UIViewController {
+class Leaderboard: UIViewController{
    
 
    // let db = Firestore.firestore()
@@ -82,8 +82,9 @@ extension Leaderboard: UITableViewDataSource{
 extension Leaderboard: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let inventoryViewController = storyBoard.instantiateViewController(identifier: "inventoryViewController") as! InventoryViewController
-        self.present(inventoryViewController, animated: true, completion: nil)
+        let inventoryViewController = InventoryViewController()
+        
+        self.navigationController?.pushViewController(inventoryViewController, animated: true)
     }
 }
 
