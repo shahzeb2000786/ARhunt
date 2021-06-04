@@ -9,80 +9,76 @@ import Foundation
 import UIKit
 
 class InventoryViewController: UIViewController{
-    let testArray = [3,4,3,4,3,2,4,5,4,3,5,6,7,8,9]
+    let scrollView = UIScrollView()
+      let stackView = UIStackView()
+     override func viewDidLoad() {
+         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.gray
+        
+        //Add and setup scroll view
+        self.view.addSubview(self.scrollView)
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false;
 
-    override func viewDidLoad(){
-        super.viewDidLoad()
-       // self.view.backgroundColor = .yellow
-        let totalItems = testArray.count
-        let totalRows = ceil(Float(totalItems)/4)
-        let itemCountInLastRow = totalItems % 4
+        //Constrain scroll view
+        self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true;
+        self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20).isActive = true;
+        self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true;
+        self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true;
+
+        //Add and setup stack view
+        self.scrollView.addSubview(self.stackView)
+        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.stackView.axis = .vertical
+        self.stackView.backgroundColor = .green
+        self.stackView.distribution = .fill
+        self.stackView.spacing = 10;
+
+        //constrain stack view to scroll view
+        self.stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true;
+        self.stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true;
+        self.stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true;
+        self.stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true;
+        
+        //constrain width of stack view to width of self.view, NOT scroll view
+        self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
+        
+       
+        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
+        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
+        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
+
         
 
 
-       // let inventoryScrollView = UIScrollView()
-
-       // self.view.addSubview(inventoryScrollView)
-        let fullStackView = UIStackView()
-        self.view.addSubview(fullStackView)
-        //inventoryScrollView
-//        inventoryScrollView.backgroundColor = .green
-//        inventoryScrollView.showsHorizontalScrollIndicator = false
-//        inventoryScrollView.translatesAutoresizingMaskIntoConstraints = false
-//        inventoryScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 2);
-//        inventoryScrollView.layer.borderWidth = 5.0
-//        inventoryScrollView.layer.borderColor = UIColor.red.cgColor
-//        NSLayoutConstraint.activate([
-//            inventoryScrollView.heightAnchor.constraint(equalToConstant: self.view.frame.height),
-//            inventoryScrollView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
-////            inventoryScrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
-////            inventoryScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-//        ])
-//
-
-        self.view.addSubview(fullStackView)
-        //fullStackView
-        fullStackView.translatesAutoresizingMaskIntoConstraints = false
-        fullStackView.axis = .vertical
-        fullStackView.distribution = .fillEqually
-        fullStackView.spacing = 10.0
-        fullStackView.backgroundColor = .orange
-        fullStackView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        let navBar = self.navigationController!.navigationBar
         
-        NSLayoutConstraint.activate([
-            fullStackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: navBar.frame.height),
-            fullStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            fullStackView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
-            fullStackView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+        let v = UIView()
+        v.backgroundColor = .yellow
+        v.frame.size = CGSize(width: self.view.frame.width * 3/4, height: self.view.frame.height/5)
+        v.backgroundColor = .yellow
+        self.stackView.addArrangedSubview(v)
+        self.stackView.addArrangedSubview(v)
+        self.stackView.addArrangedSubview(v)
+        self.stackView.addArrangedSubview(v)
+        self.stackView.addArrangedSubview(v)
 
-        ])
-        for i in 0...Int(totalRows){
-            let inventoryRowStackView = UIStackView()
-            inventoryRowStackView.translatesAutoresizingMaskIntoConstraints = false
-            inventoryRowStackView.axis = .horizontal
-            inventoryRowStackView.distribution = .fillEqually
-            inventoryRowStackView.spacing = 5
-            inventoryRowStackView.backgroundColor = .yellow
-            
-//            if i == (Int(totalRows) - 1){//executes when the last row does not have four items in it.
-//                let numOfItemsInRow = totalItems - 4 * i
-//            }//if
-//            else{
-            
-                for _ in 0...4{
-                    let inventoryViewToAdd = UIView()
-                    inventoryViewToAdd.translatesAutoresizingMaskIntoConstraints = false
-                    inventoryViewToAdd.backgroundColor = .green
-                    inventoryRowStackView.addArrangedSubview(inventoryViewToAdd)
-                }
-            //}else
-            fullStackView.addArrangedSubview(inventoryRowStackView)
-            
-            
-        }//for
-    }
+        
+//        let inventoryRowStackView = UIStackView()
+//        inventoryRowStackView.translatesAutoresizingMaskIntoConstraints = false
+//        inventoryRowStackView.axis = .horizontal
+//        inventoryRowStackView.distribution = .fillEqually
+//        inventoryRowStackView.spacing = 5
+//        inventoryRowStackView.backgroundColor = .yellow
+//        inventoryRowStackView.heightAnchor.constraint(equalToConstant: self.view.frame.height/10)
+//        inventoryRowStackView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height/10)
+//        self.stackView.addArrangedSubview(inventoryRowStackView)
     
+     }
+    
+     
+   
+     
+  
 }
 
 
