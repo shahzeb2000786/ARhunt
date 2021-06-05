@@ -10,7 +10,7 @@ import UIKit
 
 class InventoryViewController: UIViewController{
   
-    let sampleData = ["hello","hello","hello","hello","hello","hello","hello" ]
+    let sampleData = ["hello","hello","hello","hello","hello","hello","hello" ,"hello","hello","hello","hello","hello","hello","hello"]
     let inventoryScrollView = UIScrollView() // view
     
     func createInventoryItemView(itemImage: UIImage) -> UIView{
@@ -55,30 +55,22 @@ class InventoryViewController: UIViewController{
         inventoryScrollView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
         inventoryScrollView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-        var remainingInventoryItems = totalInventoryItems
         var tempStackView = UIStackView()
-        for i in (0...totalInventoryRows - 1){
+        for rowStackViewIndex in (0...totalInventoryRows - 1){
             let stackToAdd = createInventoryStackView()
             inventoryScrollView.addSubview(stackToAdd)
             var totalItemsInRow = 4
-            if i == totalInventoryRows - 1{
+            if rowStackViewIndex == totalInventoryRows - 1{
                 totalItemsInRow = itemCountInLastRow
             }
-            remainingInventoryItems -= totalItemsInRow
             
-            
-            for j in (0...3){
-                if j >= totalItemsInRow{
-                    stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add))
-                }else{
+            for itemToAddToRowIndex in (0...3){
+                itemToAddToRowIndex >= totalItemsInRow ?
+                    stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add)):
                     stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.checkmark))
-                }
             }//for loop
             
-            
-            
-            
-            if i == 0{
+            if rowStackViewIndex == 0{
                 stackToAdd.topAnchor.constraint(equalTo: inventoryScrollView.bottomAnchor, constant: 20).isActive = true
             }else{
                 stackToAdd.topAnchor.constraint(equalTo: tempStackView.bottomAnchor, constant: 20).isActive = true
