@@ -9,76 +9,97 @@ import Foundation
 import UIKit
 
 class InventoryViewController: UIViewController{
-    let scrollView = UIScrollView()
-      let stackView = UIStackView()
-     override func viewDidLoad() {
-         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.gray
-        
-        //Add and setup scroll view
-        self.view.addSubview(self.scrollView)
-        self.scrollView.translatesAutoresizingMaskIntoConstraints = false;
-
-        //Constrain scroll view
-        self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true;
-        self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20).isActive = true;
-        self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true;
-        self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20).isActive = true;
-
-        //Add and setup stack view
-        self.scrollView.addSubview(self.stackView)
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.stackView.axis = .vertical
-        self.stackView.backgroundColor = .green
-        self.stackView.distribution = .fill
-        self.stackView.spacing = 10;
-
-        //constrain stack view to scroll view
-        self.stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true;
-        self.stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true;
-        self.stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true;
-        self.stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true;
-        
-        //constrain width of stack view to width of self.view, NOT scroll view
-        self.stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true;
-        
+  
+    let contacts = ["hello","hello","hello","hello","hello","hello","hello" ]
+    let contactsTableView = UIScrollView() // view
        
-        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
-        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
-        self.stackView.addArrangedSubview(UIImageView(image: .checkmark))
-
-        
-
-
-        
-        let v = UIView()
-        v.backgroundColor = .yellow
-        v.frame.size = CGSize(width: self.view.frame.width * 3/4, height: self.view.frame.height/5)
-        v.backgroundColor = .yellow
-        self.stackView.addArrangedSubview(v)
-        self.stackView.addArrangedSubview(v)
-        self.stackView.addArrangedSubview(v)
-        self.stackView.addArrangedSubview(v)
-        self.stackView.addArrangedSubview(v)
-
-        
-//        let inventoryRowStackView = UIStackView()
-//        inventoryRowStackView.translatesAutoresizingMaskIntoConstraints = false
-//        inventoryRowStackView.axis = .horizontal
-//        inventoryRowStackView.distribution = .fillEqually
-//        inventoryRowStackView.spacing = 5
-//        inventoryRowStackView.backgroundColor = .yellow
-//        inventoryRowStackView.heightAnchor.constraint(equalToConstant: self.view.frame.height/10)
-//        inventoryRowStackView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height/10)
-//        self.stackView.addArrangedSubview(inventoryRowStackView)
     
-     }
+   
+    func createInventoryItemView() -> UIView{
+        let view: UIImageView = {
+            let view = UIImageView(image: .checkmark)
+            view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
+            view.backgroundColor = .yellow
+            return view
+        }()
+        return view
+    }
+    func createInventoryStackView()-> UIStackView {
+        let inventoryStackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.backgroundColor = .blue
+            stackView.axis = .horizontal
+            stackView.distribution = .fill
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.spacing = 5
+            return stackView
+        }()
+        return inventoryStackView
+    }
+
+
+       override func viewDidLoad() {
+           super.viewDidLoad()
+    //    view.addSubview(<#T##view: UIView##UIView#>)
+           // Do any additional setup after loading the view.
+        
+           view.backgroundColor = .white
+           view.addSubview(contactsTableView)
+        
+        contactsTableView.contentSize = CGSize(width: view.frame.width, height: 2000)
+        contactsTableView.backgroundColor = .green
+           contactsTableView.translatesAutoresizingMaskIntoConstraints = false
+
+           contactsTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
+           contactsTableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
+           contactsTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
+           contactsTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        var v = createInventoryStackView()
+        var s = createInventoryStackView()
+        contactsTableView.addSubview(v)
+        contactsTableView.addSubview(s)
+
+        v.topAnchor.constraint(equalTo: contactsTableView.topAnchor).isActive = true
+        v.widthAnchor.constraint(equalTo: contactsTableView.widthAnchor).isActive = true
+        v.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+        v.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+        v.addArrangedSubview(createInventoryItemView())
+        v.addArrangedSubview(createInventoryItemView())
+        v.addArrangedSubview(createInventoryItemView())
+        v.addArrangedSubview(createInventoryItemView())
+        
+        
+        s.topAnchor.constraint(equalTo: v.bottomAnchor).isActive = true
+        s.widthAnchor.constraint(equalTo: contactsTableView.widthAnchor).isActive = true
+        s.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+        s.addArrangedSubview(createInventoryItemView())
+        s.addArrangedSubview(createInventoryItemView())
+        s.addArrangedSubview(createInventoryItemView())
+        s.addArrangedSubview(createInventoryItemView())
+
+//        for _ in (0...3){
+//            let stackToAdd: UIStackView = {
+//                let view = UIStackView()
+//                view.backgroundColor = .red
+//                view.axis = .horizontal
+//                view.distribution = .fillEqually
+//                view.translatesAutoresizingMaskIntoConstraints = false
+//                view.spacing = 10
+//                return view
+//            }()
+//            contactsTableView.addSubview(stackToAdd)
+//            v.topAnchor.constraint(equalTo: contactsTableView.bottomAnchor).isActive = true
+//            v.widthAnchor.constraint(equalTo: contactsTableView.widthAnchor).isActive = true
+//            v.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+//            tempStackView = stackToAdd
+//        }
+}
     
      
+}
    
      
   
-}
+
 
 
