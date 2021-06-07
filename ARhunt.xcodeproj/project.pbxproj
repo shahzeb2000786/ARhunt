@@ -10,6 +10,7 @@
 		BF289AF4264F9E3700632A2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF289AF3264F9E3700632A2F /* User.swift */; };
 		BF4D548A2637E6D8008F29AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */; };
 		BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF764CC12637E9A300BFFD11 /* Leaderboard.swift */; };
+		BF7A8CDD266D906A00F21196 /* ARItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A8CDC266D906A00F21196 /* ARItem.swift */; };
 		BF9BF78A265632B90093BFBC /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BF789265632B90093BFBC /* InventoryItem.swift */; };
 		BF9BF78F265632E50093BFBC /* InventoryItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9BF78D265632E50093BFBC /* InventoryItems.xib */; };
 		BF9BF79326563D2B0093BFBC /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */; };
@@ -29,6 +30,7 @@
 		BF289AF3264F9E3700632A2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF764CC12637E9A300BFFD11 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		BF7A8CDC266D906A00F21196 /* ARItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARItem.swift; sourceTree = "<group>"; };
 		BF9BF789265632B90093BFBC /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		BF9BF78D265632E50093BFBC /* InventoryItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryItems.xib; sourceTree = "<group>"; };
 		BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				BF289AF3264F9E3700632A2F /* User.swift */,
+				BF7A8CDC266D906A00F21196 /* ARItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,7 +108,6 @@
 				BFB8B0C4261FB12400866EDA /* Coin.rcproject */,
 				BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */,
 				BFD2D7DA261E4F6200977F07 /* ViewController.swift */,
-				BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */,
 				BFD2D7DC261E4F6200977F07 /* Experience.rcproject */,
 				BFB8B0C3261F99B800866EDA /* GoldCoin.reality */,
 				BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */,
@@ -113,6 +115,7 @@
 				BFD2D7E1261E4F6400977F07 /* Assets.xcassets */,
 				BFD2D7E3261E4F6400977F07 /* LaunchScreen.storyboard */,
 				BFD2D7E6261E4F6400977F07 /* Info.plist */,
+				BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */,
 				BF764CC12637E9A300BFFD11 /* Leaderboard.swift */,
 				BF289AF6264F9E3D00632A2F /* Model */,
 				BF9BF77E265631650093BFBC /* View */,
@@ -247,6 +250,7 @@
 			files = (
 				BF9BF79326563D2B0093BFBC /* InventoryViewController.swift in Sources */,
 				BFD2D7DB261E4F6200977F07 /* ViewController.swift in Sources */,
+				BF7A8CDD266D906A00F21196 /* ARItem.swift in Sources */,
 				BF764CC22637E9A300BFFD11 /* Leaderboard.swift in Sources */,
 				BFD2D7D9261E4F6200977F07 /* AppDelegate.swift in Sources */,
 				BF9BF78A265632B90093BFBC /* InventoryItem.swift in Sources */,

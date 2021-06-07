@@ -7,12 +7,43 @@
 
 import Foundation
 import UIKit
-
+import FirebaseFirestore
 class InventoryViewController: UIViewController{
-  
-    let sampleData = ["hello","hello","hello","hello","hello","hello","hello" ,"hello","hello","hello","hello","hello","hello","hello"]
-    let inventoryScrollView = UIScrollView() // view
     
+    var arrayOfARItems: [ARItem] = []{
+        willSet{
+        }didSet{
+            var tempStackView = UIStackView()
+            let totalInventoryItems = self.arrayOfARItems.count
+            let totalInventoryRows = Int(ceil(Float(totalInventoryItems)/4))
+            let itemCountInLastRow = totalInventoryItems % 4
+            for rowStackViewIndex in (0...totalInventoryRows - 1){
+                let stackToAdd = createInventoryStackView()
+                inventoryScrollView.addSubview(stackToAdd)
+                var totalItemsInRow = 4
+                if rowStackViewIndex == totalInventoryRows - 1{
+                    totalItemsInRow = itemCountInLastRow
+                }
+                
+                for itemToAddToRowIndex in (0...3){
+                    itemToAddToRowIndex >= totalItemsInRow ?
+                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add)):
+                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.checkmark))
+                }//for loop
+                
+                if rowStackViewIndex == 0{
+                    stackToAdd.topAnchor.constraint(equalTo: inventoryScrollView.topAnchor, constant: 20).isActive = true
+                }else{
+                    stackToAdd.topAnchor.constraint(equalTo: tempStackView.bottomAnchor, constant: 20).isActive = true
+                }
+                stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
+                stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+                tempStackView = stackToAdd
+            }//for loop
+        }//didset
+    }//arrayOfARItems
+
+    let inventoryScrollView = UIScrollView() // viewf
     func createInventoryItemView(itemImage: UIImage) -> UIView{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
@@ -39,9 +70,7 @@ class InventoryViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let totalInventoryItems = sampleData.count
-        let totalInventoryRows = Int(ceil(Float(totalInventoryItems)/4))
-        let itemCountInLastRow = totalInventoryItems % 4
+        
         
         
         view.backgroundColor = .white
@@ -55,34 +84,38 @@ class InventoryViewController: UIViewController{
         inventoryScrollView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
         inventoryScrollView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-        var tempStackView = UIStackView()
-        for rowStackViewIndex in (0...totalInventoryRows - 1){
-            let stackToAdd = createInventoryStackView()
-            inventoryScrollView.addSubview(stackToAdd)
-            var totalItemsInRow = 4
-            if rowStackViewIndex == totalInventoryRows - 1{
-                totalItemsInRow = itemCountInLastRow
-            }
-            
-            for itemToAddToRowIndex in (0...3){
-                itemToAddToRowIndex >= totalItemsInRow ?
-                    stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add)):
-                    stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.checkmark))
-            }//for loop
-            
-            if rowStackViewIndex == 0{
-                stackToAdd.topAnchor.constraint(equalTo: inventoryScrollView.bottomAnchor, constant: 20).isActive = true
-            }else{
-                stackToAdd.topAnchor.constraint(equalTo: tempStackView.bottomAnchor, constant: 20).isActive = true
-            }
-            stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
-            stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
-            tempStackView = stackToAdd
-        }//for loop
+         setARInventoryItems()
        
     }//viewDidLoad
     
-     
+    func setARInventoryItems(){
+        let db = Firestore.firestore()
+        db.collection("ARObjects").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                var arObjArray: [ARItem] = []
+            
+                for document in querySnapshot!.documents {
+                    let arObject = document.data()
+                    
+                    let findCount = (arObject["FindCount"]) as? String ?? "-"
+                    let location = (arObject["Location"]) as? String ?? "-"
+                    let points = (arObject["Points"]) as? String ?? "-"
+                    let rarity = (arObject["Rarity"]) as? String ?? "-"
+
+                    let arObjectToAdd = ARItem(FindCount: findCount, Location: location, Points: points, Rarity: rarity)
+
+
+                    arObjArray.append(arObjectToAdd)
+                   // print(userToAdd)
+                    //print("\(document.documentID) => \(document.data())")
+                }//end of for
+                self.arrayOfARItems = arObjArray
+                //self.arrayOfLeaderboardUsers = tempLeaderboardArray
+            }//end of else
+        }//end of db.collection closure
+    }
 }
    
      
