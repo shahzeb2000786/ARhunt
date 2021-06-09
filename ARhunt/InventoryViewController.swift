@@ -27,8 +27,9 @@ class InventoryViewController: UIViewController{
                 
                 for itemToAddToRowIndex in (0...3){
                     itemToAddToRowIndex >= totalItemsInRow ?
-                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add)):
-                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.checkmark))
+                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark)):
+                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add))
+                        
                 }//for loop
                 
                 if rowStackViewIndex == 0{
@@ -103,9 +104,7 @@ class InventoryViewController: UIViewController{
                     let location = (arObject["Location"]) as? String ?? "-"
                     let points = (arObject["Points"]) as? String ?? "-"
                     let rarity = (arObject["Rarity"]) as? String ?? "-"
-
                     let arObjectToAdd = ARItem(FindCount: findCount, Location: location, Points: points, Rarity: rarity)
-
 
                     arObjArray.append(arObjectToAdd)
                    // print(userToAdd)
