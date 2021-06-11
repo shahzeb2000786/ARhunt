@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 class InventoryViewController: UIViewController{
-    
     var arrayOfARItems: [ARItem] = []{
         willSet{
         }didSet{
@@ -49,7 +48,6 @@ class InventoryViewController: UIViewController{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
             view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
-            view.backgroundColor = .yellow
             return view
         }()
         return view
@@ -58,7 +56,6 @@ class InventoryViewController: UIViewController{
     func createInventoryStackView()-> UIStackView {
         let inventoryStackView: UIStackView = {
             let stackView = UIStackView()
-            stackView.backgroundColor = .blue
             stackView.axis = .horizontal
             stackView.distribution = .fill
             stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,14 +68,10 @@ class InventoryViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         view.backgroundColor = .white
         view.addSubview(inventoryScrollView)
         
         inventoryScrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
-        inventoryScrollView.backgroundColor = .green
         inventoryScrollView.translatesAutoresizingMaskIntoConstraints = false
         inventoryScrollView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         inventoryScrollView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
@@ -96,7 +89,6 @@ class InventoryViewController: UIViewController{
                 print("Error getting documents: \(err)")
             } else {
                 var arObjArray: [ARItem] = []
-            
                 for document in querySnapshot!.documents {
                     let arObject = document.data()
                     
@@ -105,7 +97,6 @@ class InventoryViewController: UIViewController{
                     let points = (arObject["Points"]) as? String ?? "-"
                     let rarity = (arObject["Rarity"]) as? String ?? "-"
                     let arObjectToAdd = ARItem(FindCount: findCount, Location: location, Points: points, Rarity: rarity)
-
                     arObjArray.append(arObjectToAdd)
                    // print(userToAdd)
                     //print("\(document.documentID) => \(document.data())")
