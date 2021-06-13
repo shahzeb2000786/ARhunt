@@ -13,7 +13,7 @@ class InventoryViewController: UIViewController{
         willSet{
         }didSet{
             var tempStackView = UIStackView()
-            let totalInventoryItems = self.arrayOfARItems.count
+            let totalInventoryItems = 32
             let totalInventoryRows = Int(ceil(Float(totalInventoryItems)/4))
             let itemCountInLastRow = totalInventoryItems % 4
             for rowStackViewIndex in (0...totalInventoryRows - 1){
@@ -25,10 +25,14 @@ class InventoryViewController: UIViewController{
                 }
                 
                 for itemToAddToRowIndex in (0...3){
-                    itemToAddToRowIndex >= totalItemsInRow ?
-                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark)):
-                        stackToAdd.addArrangedSubview(createInventoryItemView(itemImage: UIImage.add))
-                        
+                    var itemToAdd = UIView()
+                    if (itemToAddToRowIndex >= totalItemsInRow){
+                        let itemToAdd = createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark)
+                    }else{
+                        itemToAdd = createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark )
+                    }
+                        stackToAdd.addArrangedSubview(itemToAdd)
+                    inventoryScrollView.contentSize.height += itemToAdd.frame.height + 20
                 }//for loop
                 
                 if rowStackViewIndex == 0{
@@ -47,7 +51,11 @@ class InventoryViewController: UIViewController{
     func createInventoryItemView(itemImage: UIImage) -> UIView{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
+            view.layer.cornerRadius = 20
+            view.backgroundColor = .lightGray
             view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
+            print("stack view size if")
+            print(view.frame.height)
             return view
         }()
         return view
@@ -57,10 +65,11 @@ class InventoryViewController: UIViewController{
         let inventoryStackView: UIStackView = {
             let stackView = UIStackView()
             stackView.axis = .horizontal
-            stackView.distribution = .fill
+            stackView.distribution = .fillEqually
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.spacing = 0
+            stackView.spacing = 10
             return stackView
+            
         }()
         return inventoryStackView
     }//createInventoryStackView
@@ -71,13 +80,14 @@ class InventoryViewController: UIViewController{
         view.backgroundColor = .white
         view.addSubview(inventoryScrollView)
         
-        inventoryScrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
+        inventoryScrollView.contentSize = CGSize(width: view.frame.width, height: 0)
         inventoryScrollView.translatesAutoresizingMaskIntoConstraints = false
         inventoryScrollView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        inventoryScrollView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        inventoryScrollView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        inventoryScrollView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor,constant: 10).isActive = true
+        inventoryScrollView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
         inventoryScrollView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+        inventoryScrollView.showsHorizontalScrollIndicator = false
+        inventoryScrollView.backgroundColor = UIColor(named: "inventory-background-color") ?? .white
          setARInventoryItems()
        
     }//viewDidLoad
@@ -97,7 +107,7 @@ class InventoryViewController: UIViewController{
                     let points = (arObject["Points"]) as? String ?? "-"
                     let rarity = (arObject["Rarity"]) as? String ?? "-"
                     let arObjectToAdd = ARItem(FindCount: findCount, Location: location, Points: points, Rarity: rarity)
-                    arObjArray.append(arObjectToAdd)
+                    arObjArray.insert(arObjectToAdd, at: 0)
                    // print(userToAdd)
                     //print("\(document.documentID) => \(document.data())")
                 }//end of for
@@ -110,6 +120,9 @@ class InventoryViewController: UIViewController{
    
      
   
+
+
+
 
 
 
