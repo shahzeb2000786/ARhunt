@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import Firebase
+import FirebaseFirestore
 class Leaderboard: UIViewController{
    
 
@@ -21,10 +21,7 @@ class Leaderboard: UIViewController{
         }
     }
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        
-      
         leaderBoardTable.dataSource = self
         leaderBoardTable.delegate = self
         leaderBoardTable.translatesAutoresizingMaskIntoConstraints = false
@@ -36,9 +33,7 @@ class Leaderboard: UIViewController{
             leaderBoardTable.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         setTableViewData()
-    
     }//viewDidLoad
-
 }
 
 extension Leaderboard: UITableViewDataSource{
@@ -61,13 +56,11 @@ extension Leaderboard: UITableViewDataSource{
                 var tempLeaderboardArray: [User] = []
                 for document in querySnapshot!.documents {
                     let userData = document.data()
-                    
                     let firstName = (userData["firstName"]) as? String ?? "-"
                     let lastName = (userData["lastName"]) as? String ?? "-"
                     let id = (userData["id"]) as? String ?? "-"
                     let email = (userData["email"]) as? String ?? "-"
                     let points = (userData["points"]) as? String ?? "-"
-                
                     let userToAdd = User(email: email, firstName: firstName, id: id, lastName: lastName, points: points)
                     tempLeaderboardArray.append(userToAdd)
                     print(userToAdd)

@@ -31,7 +31,7 @@ class InventoryViewController: UIViewController{
                     }else{
                         itemToAdd = createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark )
                     }
-                        stackToAdd.addArrangedSubview(itemToAdd)
+                    stackToAdd.addArrangedSubview(itemToAdd)
                     inventoryScrollView.contentSize.height += itemToAdd.frame.height + 20
                 }//for loop
                 
@@ -54,8 +54,6 @@ class InventoryViewController: UIViewController{
             view.layer.cornerRadius = 20
             view.backgroundColor = .lightGray
             view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
-            print("stack view size if")
-            print(view.frame.height)
             return view
         }()
         return view
@@ -69,7 +67,6 @@ class InventoryViewController: UIViewController{
             stackView.translatesAutoresizingMaskIntoConstraints = false
             stackView.spacing = 10
             return stackView
-            
         }()
         return inventoryStackView
     }//createInventoryStackView
@@ -79,7 +76,6 @@ class InventoryViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(inventoryScrollView)
-        
         inventoryScrollView.contentSize = CGSize(width: view.frame.width, height: 0)
         inventoryScrollView.translatesAutoresizingMaskIntoConstraints = false
         inventoryScrollView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -88,7 +84,7 @@ class InventoryViewController: UIViewController{
         inventoryScrollView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         inventoryScrollView.showsHorizontalScrollIndicator = false
         inventoryScrollView.backgroundColor = UIColor(named: "inventory-background-color") ?? .white
-         setARInventoryItems()
+        setARInventoryItems()
        
     }//viewDidLoad
     
