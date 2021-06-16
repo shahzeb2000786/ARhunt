@@ -32,9 +32,7 @@ class InventoryViewController: UIViewController{
                         itemToAdd = createInventoryItemView(itemImage: UIImage(named:"HubCoin") ?? .checkmark )
                     }
                     stackToAdd.addArrangedSubview(itemToAdd)
-                    inventoryScrollView.contentSize.height += itemToAdd.frame.height + 20
                 }//for loop
-                
                 if rowStackViewIndex == 0{
                     stackToAdd.topAnchor.constraint(equalTo: inventoryScrollView.topAnchor, constant: 20).isActive = true
                 }else{
@@ -42,6 +40,8 @@ class InventoryViewController: UIViewController{
                 }
                 stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
                 stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.width/4 - view.frame.width/20).isActive = true
+                inventoryScrollView.contentSize.height += view.frame.width/4 - view.frame.width/20
+
                 tempStackView = stackToAdd
             }//for loop
         }//didset
