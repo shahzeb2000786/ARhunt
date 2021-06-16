@@ -41,13 +41,22 @@ class InventoryViewController: UIViewController{
                     stackToAdd.topAnchor.constraint(equalTo: tempStackView.bottomAnchor, constant: 20).isActive = true
                 }
                 stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
-                stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.height/10).isActive = true
+                stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.width/4 - view.frame.width/20).isActive = true
                 tempStackView = stackToAdd
             }//for loop
         }//didset
     }//arrayOfARItems
 
-    let inventoryScrollView = UIScrollView() // viewf
+    let inventoryScrollView = UIScrollView()
+    let inventoryLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: label.font.fontName, size: 30)
+        label.text = "Inventory"
+        label.textColor = .white
+        label.backgroundColor = .clear
+        return label
+    }()
     func createInventoryItemView(itemImage: UIImage) -> UIView{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
@@ -65,7 +74,7 @@ class InventoryViewController: UIViewController{
             stackView.axis = .horizontal
             stackView.distribution = .fillEqually
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.spacing = 10
+            stackView.spacing = view.frame.width/20
             return stackView
         }()
         return inventoryStackView
@@ -86,6 +95,8 @@ class InventoryViewController: UIViewController{
         inventoryScrollView.backgroundColor = UIColor(named: "inventory-background-color") ?? .white
         setARInventoryItems()
        
+        
+
     }//viewDidLoad
     
     func setARInventoryItems(){
