@@ -25,6 +25,8 @@ class Leaderboard: UIViewController{
         leaderBoardTable.dataSource = self
         leaderBoardTable.delegate = self
         leaderBoardTable.translatesAutoresizingMaskIntoConstraints = false
+        leaderBoardTable.backgroundColor = UIColor(named: "inventory-background-color") ?? .white
+        
         self.view.addSubview(leaderBoardTable)
         NSLayoutConstraint.activate([
             leaderBoardTable.widthAnchor.constraint(equalToConstant: self.view.frame.width),
@@ -44,6 +46,7 @@ extension Leaderboard: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = arrayOfLeaderboardUsers[indexPath.row].email + "    " + arrayOfLeaderboardUsers[indexPath.row].points
+        cell.textLabel?.textColor = .white
         return cell
     }
     

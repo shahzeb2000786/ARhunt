@@ -13,7 +13,7 @@ class InventoryViewController: UIViewController{
         willSet{
         }didSet{
             var tempStackView = UIStackView()
-            let totalInventoryItems = 32
+            let totalInventoryItems = 65
             let totalInventoryRows = Int(ceil(Float(totalInventoryItems)/4))
             let itemCountInLastRow = totalInventoryItems % 4
             for rowStackViewIndex in (0...totalInventoryRows - 1){
@@ -40,7 +40,7 @@ class InventoryViewController: UIViewController{
                 }
                 stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
                 stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.width/4 - view.frame.width/20).isActive = true
-                inventoryScrollView.contentSize.height += view.frame.width/4 - view.frame.width/20
+                inventoryScrollView.contentSize.height += view.frame.width/4 - view.frame.width/20 + 20*CGFloat(totalInventoryRows)
 
                 tempStackView = stackToAdd
             }//for loop
