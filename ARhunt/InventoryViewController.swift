@@ -40,7 +40,7 @@ class InventoryViewController: UIViewController{
                 }
                 stackToAdd.widthAnchor.constraint(equalTo: inventoryScrollView.widthAnchor).isActive = true
                 stackToAdd.heightAnchor.constraint(equalToConstant: view.frame.width/4 - view.frame.width/20).isActive = true
-                inventoryScrollView.contentSize.height += view.frame.width/4 - view.frame.width/20 + 20*CGFloat(totalInventoryRows)
+                inventoryScrollView.contentSize.height +=  view.frame.width/4 - view.frame.width/20 + 20
 
                 tempStackView = stackToAdd
             }//for loop
