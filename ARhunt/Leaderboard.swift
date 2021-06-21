@@ -46,7 +46,7 @@ extension Leaderboard: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = arrayOfLeaderboardUsers[indexPath.row].email + "    " + arrayOfLeaderboardUsers[indexPath.row].points
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .black
         return cell
     }
     
@@ -67,7 +67,6 @@ extension Leaderboard: UITableViewDataSource{
                     let userToAdd = User(email: email, firstName: firstName, id: id, lastName: lastName, points: points)
                     tempLeaderboardArray.append(userToAdd)
                     print(userToAdd)
-                    //print("\(document.documentID) => \(document.data())")
                 }//end of for
                 self.arrayOfLeaderboardUsers = tempLeaderboardArray
             }//end of else
