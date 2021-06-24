@@ -26,13 +26,10 @@ class Leaderboard: UIViewController{
         super.viewDidLoad()
         leaderBoardTable.dataSource = self
         leaderBoardTable.delegate = self
-        // Step 3: initalise and configure CLLocationManager
+        
             locationManager = CLLocationManager()
             locationManager?.delegate = self
-            
-            // Step 4: request authorization
             locationManager?.requestWhenInUseAuthorization()
-            // or
             locationManager?.requestAlwaysAuthorization()
         
         
