@@ -102,13 +102,9 @@ extension Leaderboard: CLLocationManagerDelegate {
       print("LocationManager didChangeAuthorization notDetermined")
     case .authorizedWhenInUse: // Setting option: While Using the App
       print("LocationManager didChangeAuthorization authorizedWhenInUse")
-      
-      // Stpe 6: Request a one-time location information
       locationManager?.requestLocation()
     case .authorizedAlways: // Setting option: Always
       print("LocationManager didChangeAuthorization authorizedAlways")
-      
-      // Stpe 6: Request a one-time location information
       locationManager?.requestLocation()
     case .restricted: // Restricted by parental control
       print("LocationManager didChangeAuthorization restricted")
@@ -124,6 +120,10 @@ extension Leaderboard: CLLocationManagerDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     locations.forEach { (location) in
+        if(Float(location.coordinate.latitude) > 39.8540 && Float(location.coordinate.latitude) < 39.8550 && Float(location.coordinate.longitude) < -77.2310 && Float(location.coordinate.longitude) > -77.2320 ){
+            print("You are on top of an AR object")
+        }
+        
       print("LocationManager didUpdateLocations: \(dateFormatter.string(from: location.timestamp)); \(location.coordinate.latitude), \(location.coordinate.longitude)")
       print("LocationManager altitude: \(location.altitude)")
       print("LocationManager floor?.level: \(location.floor?.level)")
