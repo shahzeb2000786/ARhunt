@@ -87,7 +87,7 @@ extension Leaderboard: UITableViewDataSource{
 extension Leaderboard: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let inventoryViewController = InventoryViewController()
+        let inventoryViewController = ViewController()
         self.navigationController?.pushViewController(inventoryViewController, animated: true)
     }
 }
