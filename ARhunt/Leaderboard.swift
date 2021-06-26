@@ -31,7 +31,7 @@ class Leaderboard: UIViewController{
             locationManager?.delegate = self
             locationManager?.requestWhenInUseAuthorization()
             locationManager?.requestAlwaysAuthorization()
-        
+        print("flasjflsjaflsjfl;jaslfjsaas;fja;sfj")
         
         leaderBoardTable.translatesAutoresizingMaskIntoConstraints = false
         leaderBoardTable.backgroundColor = UIColor(named: "inventory-background-color") ?? .white

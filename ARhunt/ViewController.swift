@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         locationManager?.requestAlwaysAuthorization()
       //  let db = Firestore.firestore()
 
-       
+     print("hello there dude")
 //         Load the "Box" scene from the "Experience" Reality File
 //        // Add the box anchor to the scene
         arView = ARView()
@@ -40,6 +40,10 @@ class ViewController: UIViewController {
             boxAnchor.children[0].transform = Transform(pitch: 0,
                                                         yaw: 0,
                                                        roll: .pi/4)
+        print("---------------------------------------------------")
+        print(boxAnchor.children[0])
+        print("---------------------------------------------------")
+
         let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { timer in
             let curOrientationAngle = boxAnchor.coin?.orientation.angle
             
