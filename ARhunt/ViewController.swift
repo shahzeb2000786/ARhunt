@@ -26,11 +26,10 @@ class ViewController: UIViewController {
 
        
 //         Load the "Box" scene from the "Experience" Reality File
-//
-//
 //        // Add the box anchor to the scene
         arView = ARView()
         self.view.addSubview(arView)
+        arView.translatesAutoresizingMaskIntoConstraints = false
         arView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         arView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         arView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
@@ -107,7 +106,7 @@ extension ViewController: CLLocationManagerDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     locations.forEach { (location) in
-        if(Float(location.coordinate.latitude) > 39.8540 && Float(location.coordinate.latitude) < 39.8550 && Float(location.coordinate.longitude) < -77.2310 && Float(location.coordinate.longitude) > -77.2320 ){
+        if(Float(location.coordinate.latitude) > 39.7610 && Float(location.coordinate.latitude) < 39.7620 && Float(location.coordinate.longitude) < -77.5482 && Float(location.coordinate.longitude) > -77.5493 ){
             print("You are on top of an AR object")
         }
         
