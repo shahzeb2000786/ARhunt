@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var locationManager: CLLocationManager?
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
         let boxAnchor = try! Experience.loadBox()
         locationManager = CLLocationManager()
@@ -24,7 +25,6 @@ class ViewController: UIViewController {
         locationManager?.requestAlwaysAuthorization()
       //  let db = Firestore.firestore()
 
-     print("hello there dude")
 //         Load the "Box" scene from the "Experience" Reality File
 //        // Add the box anchor to the scene
         arView = ARView()
@@ -36,22 +36,7 @@ class ViewController: UIViewController {
         arView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
 
         
-       // arView.scene.anchors.append(boxAnchor)
-            boxAnchor.children[0].transform = Transform(pitch: 0,
-                                                        yaw: 0,
-                                                       roll: .pi/4)
-        print("---------------------------------------------------")
-        print(boxAnchor.children[0])
-        print("---------------------------------------------------")
-
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { timer in
-            let curOrientationAngle = boxAnchor.coin?.orientation.angle
-            
-
-            boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
-                                                          axis: [1, 0, 0])
-            //print(boxAnchor.coin?.orientation.vector);
-        })
+        
       
        // timer.fire()
 
@@ -110,7 +95,20 @@ extension ViewController: CLLocationManagerDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     locations.forEach { (location) in
-        if(Float(location.coordinate.latitude) > 39.7610 && Float(location.coordinate.latitude) < 39.7620 && Float(location.coordinate.longitude) < -77.5482 && Float(location.coordinate.longitude) > -77.5493 ){
+        if(Float(location.coordinate.latitude) > 39.7550 && Float(location.coordinate.latitude) < 39.7675 && Float(location.coordinate.longitude) < -77.5400 && Float(location.coordinate.longitude) > -77.5543 ){
+            let boxAnchor = try! Experience.loadBox()
+            arView.scene.anchors.append(boxAnchor)
+             boxAnchor.children[0].transform = Transform(pitch: 0,
+                                                         yaw: 0,
+                                                        roll: .pi/4)
+
+         let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { timer in
+             let curOrientationAngle = boxAnchor.coin?.orientation.angle
+             
+             boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+                                                           axis: [1, 0, 0])
+             //print(boxAnchor.coin?.orientation.vector);
+         })
             print("You are on top of an AR object")
         }
         

@@ -22,16 +22,11 @@ class Leaderboard: UIViewController{
         }
     }
     override func viewDidLoad() {
-       
+        print("hello")
         super.viewDidLoad()
         leaderBoardTable.dataSource = self
         leaderBoardTable.delegate = self
         
-            locationManager = CLLocationManager()
-            locationManager?.delegate = self
-            locationManager?.requestWhenInUseAuthorization()
-            locationManager?.requestAlwaysAuthorization()
-        print("flasjflsjaflsjfl;jaslfjsaas;fja;sfj")
         
         leaderBoardTable.translatesAutoresizingMaskIntoConstraints = false
         leaderBoardTable.backgroundColor = UIColor(named: "inventory-background-color") ?? .white
@@ -88,65 +83,11 @@ extension Leaderboard: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let inventoryViewController = ViewController()
+        print("hello there buddy boi ")
         self.navigationController?.pushViewController(inventoryViewController, animated: true)
     }
 }
 
-
-extension Leaderboard: CLLocationManagerDelegate {
-  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    switch status {
-    case .denied: // Setting option: Never
-      print("LocationManager didChangeAuthorization denied")
-    case .notDetermined: // Setting option: Ask Next Time
-      print("LocationManager didChangeAuthorization notDetermined")
-    case .authorizedWhenInUse: // Setting option: While Using the App
-      print("LocationManager didChangeAuthorization authorizedWhenInUse")
-      locationManager?.requestLocation()
-    case .authorizedAlways: // Setting option: Always
-      print("LocationManager didChangeAuthorization authorizedAlways")
-      locationManager?.requestLocation()
-    case .restricted: // Restricted by parental control
-      print("LocationManager didChangeAuthorization restricted")
-    default:
-      print("LocationManager didChangeAuthorization")
-    }
-  }
-
-  // Step 7: Handle the location information
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("LocationManager didUpdateLocations: numberOfLocation: \(locations.count)")
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    
-    locations.forEach { (location) in
-        if(Float(location.coordinate.latitude) > 39.8540 && Float(location.coordinate.latitude) < 39.8550 && Float(location.coordinate.longitude) < -77.2310 && Float(location.coordinate.longitude) > -77.2320 ){
-            print("You are on top of an AR object")
-        }
-        
-      print("LocationManager didUpdateLocations: \(dateFormatter.string(from: location.timestamp)); \(location.coordinate.latitude), \(location.coordinate.longitude)")
-      print("LocationManager altitude: \(location.altitude)")
-      print("LocationManager floor?.level: \(location.floor?.level)")
-      print("LocationManager horizontalAccuracy: \(location.horizontalAccuracy)")
-      print("LocationManager verticalAccuracy: \(location.verticalAccuracy)")
-      print("LocationManager speedAccuracy: \(location.speedAccuracy)")
-      print("LocationManager speed: \(location.speed)")
-      print("LocationManager timestamp: \(location.timestamp)")
-      print("LocationManager courseAccuracy: \(location.courseAccuracy)") // 13.4
-      print("LocationManager course: \(location.course)")
-    }
-  }
-  
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print("LocationManager didFailWithError \(error.localizedDescription)")
-    if let error = error as? CLError, error.code == .denied {
-       // Location updates are not authorized.
-      // To prevent forever looping of `didFailWithError` callback
-       locationManager?.stopMonitoringSignificantLocationChanges()
-       return
-    }
-  }
-}
 
 
 
