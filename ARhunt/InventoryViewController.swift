@@ -83,8 +83,6 @@ class InventoryViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
-
         view.backgroundColor = .white
         view.addSubview(inventoryScrollView)
         inventoryScrollView.contentSize = CGSize(width: view.frame.width, height: 0)

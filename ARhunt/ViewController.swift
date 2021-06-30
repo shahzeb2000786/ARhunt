@@ -24,9 +24,6 @@ class ViewController: UIViewController {
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
       //  let db = Firestore.firestore()
-
-//         Load the "Box" scene from the "Experience" Reality File
-//        // Add the box anchor to the scene
         arView = ARView()
         self.view.addSubview(arView)
         arView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,18 +32,9 @@ class ViewController: UIViewController {
         arView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         arView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
 
-        
-        
-      
-       // timer.fire()
-
 
 
     }//viewDidLoad
-    
-    
-   
-
     
     //        let anchor = AnchorEntity(plane: .horizontal, classification: .floor, minimumBounds: [0.2,0.2])
     //        var cards: [Entity] = []
@@ -102,7 +90,7 @@ extension ViewController: CLLocationManagerDelegate {
                                                          yaw: 0,
                                                         roll: .pi/4)
 
-         let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { timer in
+         let timer = Timer.scheduledTimer(withTimeInterval: 0.035, repeats: true, block: { timer in
              let curOrientationAngle = boxAnchor.coin?.orientation.angle
              
              boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */

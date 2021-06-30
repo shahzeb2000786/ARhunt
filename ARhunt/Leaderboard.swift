@@ -83,7 +83,6 @@ extension Leaderboard: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let inventoryViewController = ViewController()
-        print("hello there buddy boi ")
         self.navigationController?.pushViewController(inventoryViewController, animated: true)
     }
 }
