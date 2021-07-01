@@ -19,6 +19,19 @@ class ViewController: UIViewController {
 
         super.viewDidLoad()
         let boxAnchor = try! Experience.loadBox()
+        //let boxAnchor = try! Experience.loadBox()
+        arView.scene.anchors.append(boxAnchor)
+         boxAnchor.children[0].transform = Transform(pitch: 0,
+                                                     yaw: 0,
+                                                    roll: .pi/4)
+
+     let timer = Timer.scheduledTimer(withTimeInterval: 0.035, repeats: true, block: { timer in
+         let curOrientationAngle = boxAnchor.coin?.orientation.angle
+         
+         boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+                                                       axis: [1, 0, 0])
+     })
+        print("You are on top of an AR object")
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
@@ -83,22 +96,9 @@ extension ViewController: CLLocationManagerDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     locations.forEach { (location) in
-        if(Float(location.coordinate.latitude) > 39.7550 && Float(location.coordinate.latitude) < 39.7675 && Float(location.coordinate.longitude) < -77.5400 && Float(location.coordinate.longitude) > -77.5543 ){
-            let boxAnchor = try! Experience.loadBox()
-            arView.scene.anchors.append(boxAnchor)
-             boxAnchor.children[0].transform = Transform(pitch: 0,
-                                                         yaw: 0,
-                                                        roll: .pi/4)
-
-         let timer = Timer.scheduledTimer(withTimeInterval: 0.035, repeats: true, block: { timer in
-             let curOrientationAngle = boxAnchor.coin?.orientation.angle
-             
-             boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
-                                                           axis: [1, 0, 0])
-             //print(boxAnchor.coin?.orientation.vector);
-         })
-            print("You are on top of an AR object")
-        }
+//        if(Float(location.coordinate.latitude) > 39.7550 && Float(location.coordinate.latitude) < 39.7675 && Float(location.coordinate.longitude) < -77.5400 && Float(location.coordinate.longitude) > -77.5543 ){
+//
+//        }
         
       print("LocationManager didUpdateLocations: \(dateFormatter.string(from: location.timestamp)); \(location.coordinate.latitude), \(location.coordinate.longitude)")
       print("LocationManager altitude: \(location.altitude)")
