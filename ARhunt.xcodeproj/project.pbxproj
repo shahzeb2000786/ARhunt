@@ -27,7 +27,6 @@
 		3C8722358CEC46CB47A95255 /* Pods-ARhunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARhunt.debug.xcconfig"; path = "Target Support Files/Pods-ARhunt/Pods-ARhunt.debug.xcconfig"; sourceTree = "<group>"; };
 		73EA46F545302CD6874233C0 /* Pods-ARhunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARhunt.release.xcconfig"; path = "Target Support Files/Pods-ARhunt/Pods-ARhunt.release.xcconfig"; sourceTree = "<group>"; };
 		A5BAB5746B86BB542512B2E7 /* Pods_ARhunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARhunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF23A875269143CB004D37FD /* SilverCoin.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SilverCoin.rcproject; sourceTree = "<group>"; };
 		BF289AF3264F9E3700632A2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF764CC12637E9A300BFFD11 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
@@ -36,7 +35,6 @@
 		BF9BF78D265632E50093BFBC /* InventoryItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryItems.xib; sourceTree = "<group>"; };
 		BF9BF79226563D2B0093BFBC /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		BFB8B0C3261F99B800866EDA /* GoldCoin.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = GoldCoin.reality; path = ../../../GoldCoin.reality; sourceTree = "<group>"; };
-		BFB8B0C4261FB12400866EDA /* Coin.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Coin.rcproject; sourceTree = "<group>"; };
 		BFD2D7D5261E4F6200977F07 /* ARhunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARhunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD2D7DA261E4F6200977F07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,8 +107,6 @@
 				BFD2D7D8261E4F6200977F07 /* AppDelegate.swift */,
 				BFD2D7DA261E4F6200977F07 /* ViewController.swift */,
 				BFD2D7DC261E4F6200977F07 /* Experience.rcproject */,
-				BF23A875269143CB004D37FD /* SilverCoin.rcproject */,
-				BFB8B0C4261FB12400866EDA /* Coin.rcproject */,
 				BFB8B0C3261F99B800866EDA /* GoldCoin.reality */,
 				BF4D54892637E6D8008F29AE /* GoogleService-Info.plist */,
 				BFD2D7DE261E4F6200977F07 /* Main.storyboard */,

@@ -13,11 +13,13 @@ class ViewController: UIViewController {
     //@IBOutlet var arView: ARView!
     var arView: ARView!
     var locationManager: CLLocationManager?
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        let boxAnchor = try! Experience.loadBox()
+        let goldCoin = try! Experience.loadGoldCoin()
+        let silverCoin = try! Experience.loadSilverCoin()
+        let bronzeCoin = try! Experience.loadScene()
+
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
@@ -31,27 +33,8 @@ class ViewController: UIViewController {
         arView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         arView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
 
-
-
     }//viewDidLoad
-    
-    //        let anchor = AnchorEntity(plane: .horizontal, classification: .floor, minimumBounds: [0.2,0.2])
-    //        var cards: [Entity] = []
-    //
-    //        for _ in 1...4{
-    //            let box = MeshResource.generateBox(width: 0.25, height: 2.5, depth: 0.25)
-    //            let metalMaterial = SimpleMaterial(color: .cyan, isMetallic: true)
-    //            let model = ModelEntity(mesh: box, materials: [metalMaterial])
-    //            cards.append(model)
-    //        }//for
-    //        for (index, card) in cards.enumerated(){
-    //            let x = Float(index % 2)
-    //            let z = Float(index / 2)
-    //
-    //            card.position = [x*1, 0, z*1]
-    //            anchor.addChild(card)
-    //        }
-    //        arView.scene.addAnchor(anchor)
+
 }
 
 
@@ -83,20 +66,20 @@ extension ViewController: CLLocationManagerDelegate {
     
     locations.forEach { (location) in
         if(Float(location.coordinate.latitude) > 39.7550 && Float(location.coordinate.latitude) < 39.7675 && Float(location.coordinate.longitude) < -77.5400 && Float(location.coordinate.longitude) > -77.5543 ){
-            let boxAnchor = try! Experience.loadBox()
-            arView.scene.anchors.append(boxAnchor)
-             boxAnchor.children[0].transform = Transform(pitch: 0,
+            let bronzeCoin = try! Experience.loadScene()
+            arView.scene.anchors.append(bronzeCoin)
+             bronzeCoin.children[0].transform = Transform(pitch: 0,
                                                          yaw: 0,
                                                         roll: .pi/2)
-            boxAnchor.children[0].position.y += 1
+            bronzeCoin.children[0].position.y += 1
             
 
          let timer = Timer.scheduledTimer(withTimeInterval: 0.015, repeats: true, block: { timer in
-             let curOrientationAngle = boxAnchor.coin?.orientation.angle
+            let curOrientationAngle = bronzeCoin.bronzeCoin?.orientation.angle
              
-             boxAnchor.coin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+            bronzeCoin.bronzeCoin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
                                                            axis: [1, 0, 0])
-             //print(boxAnchor.coin?.orientation.vector);
+            
          })
             print("You are on top of an AR object")
         }
