@@ -90,7 +90,6 @@ extension ViewController: CLLocationManagerDelegate {
                                                         roll: .pi/2)
             boxAnchor.children[0].position.y += 1
             
-            
 
          let timer = Timer.scheduledTimer(withTimeInterval: 0.015, repeats: true, block: { timer in
              let curOrientationAngle = boxAnchor.coin?.orientation.angle
