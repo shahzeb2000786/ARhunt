@@ -51,7 +51,7 @@ class InventoryViewController: UIViewController{
     let inventoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: label.font.fontName, size: 30)
+        label.font = UIFont(name: label.font.fontName, size: 40)
         label.text = "Inventory"
         label.textColor = .white
         label.backgroundColor = .clear

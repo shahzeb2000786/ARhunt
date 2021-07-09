@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
-      //  let db = Firestore.firestore()
         arView = ARView()
         self.view.addSubview(arView)
         arView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,30 +32,32 @@ class ViewController: UIViewController {
         arView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         arView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
 
-    }//viewDidLoad
+    }
 
 }
 
 //extension for functions used to add coins onto the AR View
 extension ViewController{
     func addCoinToView(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
-        if(Float(latitude) > 39.7550 && Float(latitude) < 39.7675 && Float(longitude) < -77.5400 && Float(longitude) > -77.5543 ){
+//        if(Float(latitude) > 39.7550 && Float(latitude) < 39.7675 && Float(longitude) < -77.5400 && Float(longitude) > -77.5543 ){
             let bronzeCoin = try! Experience.loadScene()
             arView.scene.anchors.append(bronzeCoin)
         bronzeCoin.children[0].transform = Transform(pitch: 0,
                                                          yaw: 0,
                                                         roll: .pi/2)
-            bronzeCoin.children[0].position.y += 1
+            let randNum = Float.random(in: 0.0...1.0)
+            print(randNum)
+            bronzeCoin.children[0].position.y += randNum
             
 
-         let timer = Timer.scheduledTimer(withTimeInterval: 0.015, repeats: true, block: { timer in
+         let timer = Timer.scheduledTimer(withTimeInterval: 0.0022, repeats: true, block: { timer in
             let curOrientationAngle = bronzeCoin.bronzeCoin?.orientation.angle
-            bronzeCoin.bronzeCoin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/100).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+            bronzeCoin.bronzeCoin?.orientation = simd_quatf(angle: (curOrientationAngle! + .pi/200).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
                                                            axis: [1, 0, 0])
          })
             print("You are on top of an AR object")
         }
-    }
+   // }
 }
 extension ViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -85,8 +86,6 @@ extension ViewController: CLLocationManagerDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     locations.forEach { (location) in
-        addCoinToView(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        addCoinToView(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         addCoinToView(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         
       print("LocationManager didUpdateLocations: \(dateFormatter.string(from: location.timestamp)); \(location.coordinate.latitude), \(location.coordinate.longitude)")
