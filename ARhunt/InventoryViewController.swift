@@ -61,7 +61,6 @@ class InventoryViewController: UIViewController{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
             view.layer.cornerRadius = 20
-            view.backgroundColor = .lightGray
             view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
             return view
         }()
