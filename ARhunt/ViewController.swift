@@ -41,26 +41,21 @@ class ViewController: UIViewController {
 extension ViewController{
     func addCoinToView(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
 //        if(Float(latitude) > 39.7550 && Float(latitude) < 39.7675 && Float(longitude) < -77.5400 && Float(longitude) > -77.5543 ){
-        let bronzeCoin = try! Experience.loadScene()
-    
         let randNum = Float.random(in: 0.0...1.0)
-        
-        let mesh = MeshResource.generateBox(size: 0.2)
-        let material = SimpleMaterial(color: .blue, roughness: 0.5, isMetallic:  true)
-        let entity = ModelEntity(mesh: mesh, materials: [material])
+        var entity: Entity
         let anchor = AnchorEntity(plane: .horizontal)
         do{
+            entity = try Experience.loadGoldCoin()
             anchor.addChild(entity)
         }catch let error{
             fatalError(error.localizedDescription)
-            print(error)
         }
         arView.scene.addAnchor(anchor)
-        entity.position.y += randNum
-        
+        let GoldCoin = entity.findEntity(named: "GoldCoin")!
+        GoldCoin.position.y += randNum
         let timer = Timer.scheduledTimer(withTimeInterval: 0.0022, repeats: true, block: { timer in
-            let curOrientationAngle = entity.orientation.angle
-            entity.orientation = simd_quatf(angle: (curOrientationAngle + .pi/200).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+            let curOrientationAngle = GoldCoin.orientation.angle
+            GoldCoin.orientation = simd_quatf(angle: (curOrientationAngle + .pi/200).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
                                                                    axis: [1, 0, 0])
             })
             print("You are on top of an AR object")
