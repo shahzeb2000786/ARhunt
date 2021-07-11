@@ -51,11 +51,13 @@ extension ViewController{
             fatalError(error.localizedDescription)
         }
         arView.scene.addAnchor(anchor)
-        let GoldCoin = entity.findEntity(named: "GoldCoin")!
-        GoldCoin.position.y += randNum
+        
+        print(entity.children)
+        let SilverCoin = entity.findEntity(named: "GoldCoin")!
+        SilverCoin.position.y += randNum
         let timer = Timer.scheduledTimer(withTimeInterval: 0.0022, repeats: true, block: { timer in
-            let curOrientationAngle = GoldCoin.orientation.angle
-            GoldCoin.orientation = simd_quatf(angle: (curOrientationAngle + .pi/200).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
+            let curOrientationAngle = SilverCoin.orientation.angle
+            SilverCoin.orientation = simd_quatf(angle: (curOrientationAngle + .pi/200).truncatingRemainder(dividingBy: (2 * 3.14159265)),     /* 45 Degrees */
                                                                    axis: [1, 0, 0])
             })
             print("You are on top of an AR object")
