@@ -14,44 +14,77 @@ class ViewController: UIViewController {
     //@IBOutlet var arView: ARView!
     var arView: ARView!
     var locationManager: CLLocationManager?
+    let bronzeCoin = try! Experience.loadScene()
+    
+    
+    @objc func onTap(_ sender: UITapGestureRecognizer) {
+                
+        let tapLocation: CGPoint = sender.location(in: arView)
+                let result: [CollisionCastHit] = arView.hitTest(tapLocation)
+
+                guard let hitTest: CollisionCastHit = result.first
+                else { return }
+
+                let entity: Entity = hitTest.entity
+                print(entity.name)
+        }
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
         let goldCoin = try! Experience.loadGoldCoin()
-        let silverCoin = try! Experience.loadSilverCoin()
-        let bronzeCoin = try! Experience.loadScene()
 
+        let silverCoin = try! Experience.loadSilverCoin()
+        bronzeCoin.bronzeCoin?.scale = [2,2,2]
+        bronzeCoin.bronzeCoin?.name = "Coin"
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
         arView = ARView()
         self.view.addSubview(arView)
+        self.arView.isUserInteractionEnabled = true
+           let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+           self.arView.addGestureRecognizer(tapGesture)
         arView.translatesAutoresizingMaskIntoConstraints = false
         arView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         arView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         arView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         arView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-
+        arView.scene.anchors.append(bronzeCoin)
     }
 
 }
 
 //extension for functions used to add coins onto the AR View
 extension ViewController{
+   
+        
     func addCoinToView(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
 //        if(Float(latitude) > 39.7550 && Float(latitude) < 39.7675 && Float(longitude) < -77.5400 && Float(longitude) > -77.5543 ){
+        let cubeMesh = MeshResource.generateBox(size: 81)
+        var cubeMaterial = SimpleMaterial(color:.white,isMetallic: false)
+        let cubeEntity = ModelEntity(mesh:cubeMesh,materials:[cubeMaterial])
+        cubeEntity.generateCollisionShapes(recursive: false)
+        cubeEntity.name = "this is a cube"
+        
+        
+        
         let randNum = Float.random(in: 0.0...1.0)
         var entity: Entity
-        let anchor = AnchorEntity(plane: .horizontal)
+        let anchor = AnchorEntity()
         do{
             entity = try Experience.loadGoldCoin()
             anchor.addChild(entity)
         }catch let error{
             fatalError(error.localizedDescription)
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(onTap))
+               arView.addGestureRecognizer(tapGesture)
+      
         arView.scene.addAnchor(anchor)
-        
+        arView.scene.addAnchor(anchor)
         print(entity.children)
         let SilverCoin = entity.findEntity(named: "GoldCoin")!
         SilverCoin.position.y += randNum
@@ -62,7 +95,7 @@ extension ViewController{
             })
             print("You are on top of an AR object")
         }//TIMER
-//        arView.installGestures([.translation, .rotation, .scale], for: bronzeCoin.children[0] as! HasCollision)
+
    // }//IF
 }
 extension ViewController: CLLocationManagerDelegate {
