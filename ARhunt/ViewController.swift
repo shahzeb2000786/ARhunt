@@ -32,10 +32,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
-        let goldCoin = try! Experience.loadGoldCoin()
-
-        let silverCoin = try! Experience.loadSilverCoin()
         bronzeCoin.bronzeCoin?.scale = [2,2,2]
         bronzeCoin.bronzeCoin?.name = "Coin"
         locationManager = CLLocationManager()
