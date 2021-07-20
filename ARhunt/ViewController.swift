@@ -16,7 +16,13 @@ class ViewController: UIViewController {
     var locationManager: CLLocationManager?
     let bronzeCoin = try! Experience.loadScene()
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(arView.scene.anchors.first?.name)
+        print(arView.scene.findEntity(named: "GoldCoin"))
+         let touchLocation = touches.first?.location(in: arView)
+             let tappedEntity = arView.hitTest(touchLocation!, query: .nearest, mask: .default).first?.entity
+        print(tappedEntity?.name)
+    }
     @objc func onTap(_ sender: UITapGestureRecognizer) {
                 
         let tapLocation: CGPoint = sender.location(in: arView)
@@ -78,7 +84,6 @@ extension ViewController{
         }
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(onTap))
                arView.addGestureRecognizer(tapGesture)
-      
         arView.scene.addAnchor(anchor)
         arView.scene.addAnchor(anchor)
         print(entity.children)
