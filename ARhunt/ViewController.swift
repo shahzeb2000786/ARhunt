@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     let bronzeCoin = try! Experience.loadScene()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(arView.scene.anchors.first?.name)
-        print(arView.scene.findEntity(named: "GoldCoin"))
          let touchLocation = touches.first?.location(in: arView)
              let tappedEntity = arView.hitTest(touchLocation!, query: .nearest, mask: .default).first?.entity
         print(tappedEntity?.name)
@@ -86,7 +84,6 @@ extension ViewController{
                arView.addGestureRecognizer(tapGesture)
         arView.scene.addAnchor(anchor)
         arView.scene.addAnchor(anchor)
-        print(entity.children)
         let SilverCoin = entity.findEntity(named: "GoldCoin")!
         SilverCoin.position.y += randNum
         let timer = Timer.scheduledTimer(withTimeInterval: 0.0022, repeats: true, block: { timer in
