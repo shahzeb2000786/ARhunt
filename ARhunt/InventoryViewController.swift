@@ -51,16 +51,16 @@ class InventoryViewController: UIViewController{
     let inventoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: label.font.fontName, size: 40)
+        label.font = UIFont(name: label.font.fontName, size: 50)
         label.text = "Inventory"
-        label.textColor = .white
+        label.textColor = .gray
         label.backgroundColor = .clear
         return label
     }()
     func createInventoryItemView(itemImage: UIImage) -> UIView{
         let view: UIImageView = {
             let view = UIImageView(image: itemImage)
-            view.layer.cornerRadius = 20
+            view.layer.cornerRadius = 30
             view.widthAnchor.constraint(equalToConstant: self.view.frame.width/4).isActive = true
             return view
         }()
@@ -73,7 +73,7 @@ class InventoryViewController: UIViewController{
             stackView.axis = .horizontal
             stackView.distribution = .fillEqually
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.spacing = view.frame.width/20
+            stackView.spacing = view.frame.width/15
             return stackView
         }()
         return inventoryStackView
